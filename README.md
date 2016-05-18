@@ -61,10 +61,7 @@ Default value: ``
 
 Sets the node to generate.
 
-### Usage Examples
-
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
+### Usage Example
 
 ```js
 grunt.initConfig({
@@ -74,6 +71,7 @@ grunt.initConfig({
         output: 'output/documentation',
         node: 'prod'
     },
+    default: {},
     dev: {
         options: {
             node: 'dev'
@@ -82,6 +80,10 @@ grunt.initConfig({
   },
 });
 ```
+
+This would call SOCKO! to generate the input path "documentation" into the 
+output path "output/documentation". The target "default" would use node "prod",
+the target "dev" would use node "dev".
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
