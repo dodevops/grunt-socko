@@ -1,0 +1,4 @@
+This file has two cartridge slots:
+
+This is the first dynamic content from node A.
+This is the second dynamic content from the root.

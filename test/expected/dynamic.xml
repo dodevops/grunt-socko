@@ -1,0 +1,4 @@
+<dynamic>
+    <static>This is a static node</static>
+<dynamic>This is dynamic content from the root</dynamic>
+</dynamic>
