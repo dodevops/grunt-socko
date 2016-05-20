@@ -17,7 +17,9 @@ module.exports = function (grunt) {
 
     grunt.registerMultiTask('socko', 'Grunt-Plugin for SOCKO!', function () {
 
-        var options = this.options();
+        var options = this.options({
+            ignores: []
+        });
 
         if (!options.hasOwnProperty('input')) {
             grunt.log.error('Input option missing.');
@@ -35,7 +37,10 @@ module.exports = function (grunt) {
         }
 
         var done = this.async();
-        var generatorApi = new socko.GeneratorApi(options.input);
+        var generatorApi = new socko.GeneratorApi({
+            inputPath: options.input,
+            ignores: options.ignores
+        });
 
         generatorApi.generate(
             options.node,

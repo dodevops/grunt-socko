@@ -61,6 +61,12 @@ Default value: ``
 
 Sets the node to generate.
 
+#### options.ignores
+Type: `Array`
+Default value: []
+
+Sets optional cartridge ignores for cartridge collector files.
+
 ### Usage Example
 
 ```js
