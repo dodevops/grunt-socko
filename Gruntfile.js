@@ -34,7 +34,13 @@ module.exports = function(grunt) {
         options: {
           input: 'node_modules/socko/sample',
           output: 'tmp',
-          node: 'nodeA'
+          node: 'nodeA',
+          ignores: [
+              'dynamic_txt_content1'
+          ],
+          renames: [
+              'static.txt:static.txt.test'
+          ]
         }
       }
     },

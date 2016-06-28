@@ -6,7 +6,8 @@ var filesToCheck=[
     'dynamic.json',
     'dynamic.txt',
     'dynamic.xml',
-    'static.txt',
+    'static.txt.test',
+    'collector_completely.txt',
     'subdirectory/static.txt'
 ];
 

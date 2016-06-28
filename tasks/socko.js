@@ -18,7 +18,8 @@ module.exports = function (grunt) {
     grunt.registerMultiTask('socko', 'Grunt-Plugin for SOCKO!', function () {
 
         var options = this.options({
-            ignores: []
+            ignores: [],
+            renames: []
         });
 
         if (!options.hasOwnProperty('input')) {
@@ -39,7 +40,8 @@ module.exports = function (grunt) {
         var done = this.async();
         var generatorApi = new socko.GeneratorApi({
             inputPath: options.input,
-            ignores: options.ignores
+            ignores: options.ignores,
+            renames: options.renames
         });
 
         generatorApi.generate(

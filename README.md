@@ -67,6 +67,12 @@ Default value: []
 
 Sets optional cartridge ignores for cartridge collector files.
 
+#### options.renames
+Type: `Array`
+Default value: []
+
+Sets up renaming file paths during SOCKO! generation.
+
 ### Usage Example
 
 ```js
