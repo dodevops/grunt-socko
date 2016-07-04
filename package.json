@@ -1,7 +1,7 @@
 {
   "name": "grunt-socko",
   "description": "Grunt-Plugin for SOCKO!",
-  "version": "1.0.0-beta.7",
+  "version": "1.0.0-beta.8",
   "homepage": "https://github.com/dploeger/grunt-socko",
   "author": {
     "name": "Dennis Ploeger",
@@ -37,6 +37,6 @@
     "gruntplugin"
   ],
   "dependencies": {
-    "socko": "^1.0.0-beta.12"
+    "socko": "^1.0.0-beta.13"
   }
 }
