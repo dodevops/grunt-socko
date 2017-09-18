@@ -19,7 +19,8 @@ module.exports = function (grunt) {
 
         var options = this.options({
             ignores: [],
-            renames: []
+            renames: [],
+            skipIdenticalSockets: false
         });
 
         if (!options.hasOwnProperty('input')) {
@@ -41,7 +42,8 @@ module.exports = function (grunt) {
         var generatorApi = new socko.GeneratorApi({
             inputPath: options.input,
             ignores: options.ignores,
-            renames: options.renames
+            renames: options.renames,
+            skipIdenticalSockets: options.skipIdenticalSockets
         });
 
         generatorApi.generate(

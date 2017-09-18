@@ -16,4 +16,3 @@ int test()
 test2 = test
 This is the second dynamic content from the root.
 <dynamic>This is dynamic content from the root</dynamic>
-
