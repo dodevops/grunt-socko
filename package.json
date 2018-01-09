@@ -1,24 +1,23 @@
 {
   "name": "grunt-socko",
   "description": "Grunt-Plugin for SOCKO!",
-  "version": "1.1.0-beta.1",
-  "homepage": "https://github.com/dploeger/grunt-socko",
+  "version": "1.1.0-beta.2",
+  "homepage": "https://github.com/dodevops/grunt-socko",
   "author": {
     "name": "Dennis Ploeger",
-    "email": "develop@dieploegers.de",
-    "url": "http://dennis.dieploegers.de"
+    "email": "dennis.ploeger@kps.com"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:dploeger/grunt-socko.git"
+    "url": "git@github.com:dodevops/grunt-socko.git"
   },
   "bugs": {
-    "url": "https://github.com/dploeger/grunt-socko/issues"
+    "url": "https://github.com/dodevops/grunt-socko/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/dploeger/grunt-socko/blob/master/LICENSE-MIT"
+      "url": "https://github.com/dodevops/grunt-socko/blob/master/LICENSE-MIT"
     }
   ],
   "engines": {
