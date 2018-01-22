@@ -1,1 +1,1 @@
-{"version":3,"file":"socko.js","sourceRoot":"","sources":["socko.ts"],"names":[],"mappings":";AAAA;;GAEG;AACH,gEAAuD;AAMvD,iBAAS,UAAU,KAAa;IAC9B,KAAK,CAAC,iBAAiB,CAAC,OAAO,EAAE,yBAAyB,EAAE,gCAAY,CAAC,CAAA;AAC3E,CAAC,CAAA"}
+{"version":3,"file":"socko.js","sourceRoot":"","sources":["socko.ts"],"names":[],"mappings":";AAGA,gEAAuD;AAMvD,iBAAS,UAAU,KAAa;IAC9B,KAAK,CAAC,iBAAiB,CAAC,OAAO,EAAE,yBAAyB,EAAE,gCAAY,CAAC,CAAA;AAC3E,CAAC,CAAA"}

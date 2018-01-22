@@ -64,75 +64,44 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<h1 id="grunt-socko-grunt-plugin-for-socko-">grunt-socko - Grunt-Plugin for SOCKO!</h1>
-				<h2 id="getting-started">Getting Started</h2>
-				<p>This plugin requires Grunt <code>~0.4.5</code></p>
-				<p>If you haven&#39;t used <a href="http://gruntjs.com/">Grunt</a> before, be sure to check out the <a href="http://gruntjs.com/getting-started">Getting Started</a> guide, as it explains how to create a <a href="http://gruntjs.com/sample-gruntfile">Gruntfile</a> as well as install and use Grunt plugins. Once you&#39;re familiar with that process, you may install this plugin with this command:</p>
-				<pre><code class="lang-shell">npm install grunt-socko --save-dev
+				<h1 id="grunt-socko-grunt-plugin-for-socko-build-status-https-travis-ci-org-dodevops-grunt-socko-svg-branch-master-https-travis-ci-org-dodevops-grunt-socko-coverage-status-https-coveralls-io-repos-github-dodevops-grunt-socko-badge-svg-branch-master-https-coveralls-io-github-dodevops-grunt-socko-branch-master-npm-https-img-shields-io-npm-v-grunt-socko-svg-https-www-npmjs-com-package-grunt-socko-">grunt-socko - Grunt-Plugin for SOCKO! <a href="https://travis-ci.org/dodevops/grunt-socko"><img src="https://travis-ci.org/dodevops/grunt-socko.svg?branch=master" alt="Build Status"></a> <a href="https://coveralls.io/github/dodevops/grunt-socko?branch=master"><img src="https://coveralls.io/repos/github/dodevops/grunt-socko/badge.svg?branch=master" alt="Coverage Status"></a> <a href="https://www.npmjs.com/package/grunt-socko"><img src="https://img.shields.io/npm/v/grunt-socko.svg" alt="npm"></a></h1>
+				<h2 id="introduction">Introduction</h2>
+				<p>This is the Grunt frontend for the <a href="https://github.com/dodevops/socko-api">Socko-framework</a>. It works mostly identical to the <a href="https://github.com/dodevops/socko">Socko-CLI application</a> working on directories and files. You might read the introduction there first to get an overview of SOCKO&#39;s features.</p>
+				<h2 id="usage">Usage</h2>
+				<p>Install the plugin using</p>
+				<pre><code>npm install grunt-socko --<span class="hljs-built_in">save</span>-<span class="hljs-built_in">dev</span>
+</code></pre><p>In your Gruntfile.js, load the tasks of the plugin by adding the line</p>
+				<pre><code class="lang-js">grunt.loadNpmTasks(<span class="hljs-string">'grunt-socko'</span>)
 </code></pre>
-				<p>Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:</p>
-				<pre><code class="lang-js">grunt.loadNpmTasks(<span class="hljs-string">'grunt-socko'</span>);
-</code></pre>
-				<p>If you don&#39;t know, what SOCKO! is, please read <a href="https://github.com/dploeger/socko/blob/master/README.md">this</a> first:</p>
-				<h2 id="the-socko-task">The &quot;socko&quot; task</h2>
-				<h3 id="overview">Overview</h3>
-				<p>In your project&#39;s Gruntfile, add a section named <code>socko</code> to the data object passed into <code>grunt.initConfig()</code>.</p>
-				<p>Currently, grunt-socko only uses the task or target-specific options to set up
-				SOCKO! accordingly.</p>
-				<pre><code class="lang-js">grunt.initConfig({
-  <span class="hljs-attr">socko</span>: {
+				<p>Now you&#39;re equipped with a &quot;socko&quot; task, that you can <a href="https://gruntjs.com/sample-gruntfile">configure and run using the usual Grunt features</a>.</p>
+				<h2 id="configuration">Configuration</h2>
+				<p>The plugin does not work with the usual Grunt files-options as it specifically requires one input, one output and one node. You can configure those in the options object of your task configuration:</p>
+				<pre><code class="lang-js">socko: {
+  <span class="hljs-attr">nodeA</span>: {
     <span class="hljs-attr">options</span>: {
-      <span class="hljs-comment">// Task-specific options go here.</span>
-    },
-    <span class="hljs-attr">your_target</span>: {
-      <span class="hljs-comment">// Target-specific file lists and/or options go here.</span>
-    },
+      <span class="hljs-attr">input</span>: <span class="hljs-string">"basic"</span>,
+      <span class="hljs-attr">output</span>: <span class="hljs-string">"output.basic"</span>,
+      <span class="hljs-attr">node</span>: <span class="hljs-string">"nodeA"</span>
+    }
   },
-});
-</code></pre>
-				<h3 id="options">Options</h3>
-				<h4 id="options-input">options.input</h4>
-				<p>Type: <code>String</code>
-				Default value: ``</p>
-				<p>Points to the SOCKO! input directory. </p>
-				<h4 id="options-output">options.output</h4>
-				<p>Type: <code>String</code>
-				Default value: ``</p>
-				<p>Points to the SOCKO! output directory</p>
-				<h4 id="options-node">options.node</h4>
-				<p>Type: <code>String</code>
-				Default value: ``</p>
-				<p>Sets the node to generate.</p>
-				<h4 id="options-ignores">options.ignores</h4>
-				<p>Type: <code>Array</code>
-				Default value: []</p>
-				<p>Sets optional cartridge ignores for cartridge collector files.</p>
-				<h4 id="options-renames">options.renames</h4>
-				<p>Type: <code>Array</code>
-				Default value: []</p>
-				<p>Sets up renaming file paths during SOCKO! generation.</p>
-				<h3 id="usage-example">Usage Example</h3>
-				<pre><code class="lang-js">grunt.initConfig({
-  <span class="hljs-attr">socko</span>: {
+  <span class="hljs-attr">nodeB</span>: {
     <span class="hljs-attr">options</span>: {
-        <span class="hljs-attr">input</span>: <span class="hljs-string">'documentation'</span>,
-        <span class="hljs-attr">output</span>: <span class="hljs-string">'output/documentation'</span>,
-        <span class="hljs-attr">node</span>: <span class="hljs-string">'prod'</span>
-    },
-    <span class="hljs-attr">default</span>: {},
-    <span class="hljs-attr">dev</span>: {
-        <span class="hljs-attr">options</span>: {
-            <span class="hljs-attr">node</span>: <span class="hljs-string">'dev'</span>
-        }
-    },
-  },
-});
+      <span class="hljs-attr">input</span>: <span class="hljs-string">"basic"</span>,
+      <span class="hljs-attr">output</span>: <span class="hljs-string">"output.basic"</span>,
+      <span class="hljs-attr">node</span>: <span class="hljs-string">"nodeA:nodeB"</span>
+    }
+  }
+}
 </code></pre>
-				<p>This would call SOCKO! to generate the input path &quot;documentation&quot; into the
-					output path &quot;output/documentation&quot;. The target &quot;default&quot; would use node &quot;prod&quot;,
-				the target &quot;dev&quot; would use node &quot;dev&quot;.</p>
-				<h2 id="contributing">Contributing</h2>
-				<p>In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using <a href="http://gruntjs.com/">Grunt</a>.</p>
+				<p>The following options are required:</p>
+				<ul>
+					<li>input: The path to the input directory</li>
+					<li>output: The path to the output directory</li>
+					<li>node: The node to process</li>
+				</ul>
+				<p>For other options, please see the API documentation of the <a href="https://dodevops.github.io/grunt-socko/interfaces/lib.sockooptionsinterface.html">SockoOptionsInterface</a></p>
+				<h2 id="migrating-from-socko-1-0-0">Migrating from Socko 1.0.0</h2>
+				<p>Please see the <a href="https://github.com/dodevops/socko/blob/2.0.0/README.md#migrating-from-socko-1">notes from the CLI</a> about the breaking changes between SOCKO! 1 and 2</p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
