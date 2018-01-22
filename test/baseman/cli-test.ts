@@ -70,10 +70,22 @@ export class GruntSockoCLITest extends CLITest {
             let caseDir = path.join(__dirname, caseName)
             let subcases = require(path.join(caseDir, 'subcases')).default as SubcaseDefinition[]
 
+            let debuggerArgs = []
+
+            for (let arg of process.execArgv) {
+              let match = arg.match(/^--(debug|inspect)(?:-brk)?=(.*)/)
+              if (match) {
+                debuggerArgs.push(`--${match[1]}`)
+              }
+              if (arg === '--expose_debug_as=v8debug') {
+                debuggerArgs.push(arg)
+              }
+            }
+
             return subcases.map(subcase => {
               return new GruntSockoCLITestCase(
                 `${caseName}${subcase.name}`,
-                [path.join(__dirname, '..', '..', 'node_modules', '.bin', 'grunt')],
+                debuggerArgs.concat([path.join(__dirname, '..', '..', 'node_modules', '.bin', 'grunt')]),
                 {
                   cwd: caseDir,
                   allowNonEmptyCWD: true

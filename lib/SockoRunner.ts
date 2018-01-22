@@ -114,7 +114,7 @@ export class SockoRunner {
         },
         (error: any) => {
           if (error.path === output) {
-            return Bluebird.fromCallback(fs.mkdir.bind(null, output))
+            return Bluebird.resolve()
           }
           return Bluebird.reject(
             new Error(`Can not find directory ${error.path}. Please check your command line arguments.`)
