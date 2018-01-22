@@ -1,6 +1,6 @@
 {
   "name": "grunt-socko",
-  "version": "2.0.0-alpha.2",
+  "version": "2.0.0-alpha.3",
   "description": "Grunt-Plugin for SOCKO!",
   "keywords": [
     "gruntplugin",
@@ -41,7 +41,7 @@
     "bluebird": "^3.5.1",
     "loglevel": "^1.6.1",
     "socko-api": "^0.4.1",
-    "socko-converter-file": "^0.6.2",
+    "socko-converter-file": "^0.6.3",
     "file-hierarchy": "^2.0.0",
     "del": "^3.0.0"
   },
