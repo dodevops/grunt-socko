@@ -1,0 +1,13 @@
+Running "socko:default" (socko) task
+
+Checking valid access to specified paths
+
+Converting fileInput and fileHierarchy directories to tree.
+
+Converting file trees to socko trees
+
+Running socko
+
+Converting output tree to directory
+
+Done.

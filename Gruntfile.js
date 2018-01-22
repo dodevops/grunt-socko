@@ -1,70 +1,98 @@
-/*
- * grunt-socko
- * https://github.com/dploeger/grunt-socko
- *
- * Copyright (c) 2016 Dennis Ploeger
- * Licensed under the MIT license.
- */
+module.exports = function (grunt) {
 
-'use strict';
-
-module.exports = function(grunt) {
-
-  // Project configuration.
   grunt.initConfig({
-    jshint: {
-      all: [
-        'Gruntfile.js',
-        'tasks/*.js',
-        '<%= nodeunit.tests %>'
-      ],
+    tslint: {
       options: {
-        jshintrc: '.jshintrc'
+        configuration: 'tslint.json'
+      },
+      files: {
+        src: [
+          'lib/**/*.ts',
+          'tasks/**/*.ts',
+          'test/**/*.ts',
+          '!lib/**/*.d.ts',
+          '!tasks/**/*.d.ts',
+          '!test/**/*.d.ts'
+        ]
       }
     },
-
-    // Before generating any new files, remove any previously-created files.
     clean: {
-      tests: ['tmp']
+      coverage: ['test/coverage'],
+      doc: ['docs']
     },
-
-    // Configuration to be run (and then tested).
-    socko: {
-      nodeA: {
-        options: {
-          input: 'node_modules/socko/sample',
-          output: 'tmp',
-          node: 'nodeA',
-          ignores: [
-              'dynamic_txt_content1'
-          ],
-          renames: [
-              'static.txt:static.txt.test'
-          ]
-        }
+    ts: {
+      default: {
+        tsconfig: true
       }
     },
-
-    // Unit tests.
-    nodeunit: {
-      tests: ['test/*_test.js']
+    shell: {
+      baseman: {
+        command: "nyc baseman run"
+      }
+    },
+    coveralls: {
+      default: {
+        src: 'test/coverage/lcov.info'
+      }
+    },
+    typedoc: {
+      default: {
+        options: {
+          out: 'docs/',
+          name: 'grunt-socko',
+          readme: 'README.md',
+          "external-modulemap": '.*/([^/]*)/.*'
+        },
+        src: ['tasks/socko.ts']
+      }
     }
+  })
 
-  });
+  grunt.loadNpmTasks('grunt-ts')
+  grunt.loadNpmTasks('grunt-tslint')
+  grunt.loadNpmTasks('grunt-contrib-clean')
+  grunt.loadNpmTasks('grunt-shell')
+  grunt.loadNpmTasks('grunt-coveralls')
+  grunt.loadNpmTasks('grunt-typedoc')
 
-  // Actually load this plugin's task(s).
-  grunt.loadTasks('tasks');
+  grunt.registerTask(
+    'build',
+    [
+      'tslint',
+      'ts'
+    ]
+  )
 
-  // These plugins provide necessary tasks.
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-nodeunit');
+  grunt.registerTask(
+    'doc',
+    [
+      'clean:doc',
+      'typedoc'
+    ]
+  )
 
-  // Whenever the "test" task is run, first clean the "tmp" dir, then run this
-  // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'socko', 'nodeunit']);
+  grunt.registerTask(
+    'default',
+    [
+      'build'
+    ]
+  )
 
-  // By default, lint and run all tests.
-  grunt.registerTask('default', ['jshint', 'test']);
+  grunt.registerTask(
+    'test',
+    [
+      'build',
+      'clean:coverage',
+      'shell:baseman'
+    ]
+  )
 
-};
+  grunt.registerTask(
+    'release',
+    [
+      'test',
+      'doc'
+    ]
+  )
+
+}

@@ -1,101 +1,52 @@
-# grunt-socko
+# grunt-socko - Grunt-Plugin for SOCKO! [![Build Status](https://travis-ci.org/dodevops/grunt-socko.svg?branch=master)](https://travis-ci.org/dodevops/grunt-socko) [![Coverage Status](https://coveralls.io/repos/github/dodevops/grunt-socko/badge.svg?branch=master)](https://coveralls.io/github/dodevops/grunt-socko?branch=master) [![npm](https://img.shields.io/npm/v/grunt-socko.svg)](https://www.npmjs.com/package/grunt-socko)
 
-> Grunt-Plugin for SOCKO!
+## Introduction
 
-## Getting Started
-This plugin requires Grunt `~0.4.5`
+This is the Grunt frontend for the [Socko-framework](https://github.com/dodevops/socko-api). It works mostly identical to the [Socko-CLI application](https://github.com/dodevops/socko) working on directories and files. You might read the introduction there first to get an overview of SOCKO's features.
 
-If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
+## Usage
 
-```shell
+Install the plugin using
+
+```
 npm install grunt-socko --save-dev
 ```
 
-Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
+In your Gruntfile.js, load the tasks of the plugin by adding the line
 
 ```js
-grunt.loadNpmTasks('grunt-socko');
+grunt.loadNpmTasks('grunt-socko')
 ```
 
-If you don't know, what SOCKO! is, please read [this](https://github.com/dploeger/socko/blob/master/README.md) first:
+Now you're equipped with a "socko" task, that you can [configure and run using the usual Grunt features](https://gruntjs.com/sample-gruntfile).
 
+## Configuration
 
-## The "socko" task
-
-### Overview
-In your project's Gruntfile, add a section named `socko` to the data object passed into `grunt.initConfig()`.
-
-Currently, grunt-socko only uses the task or target-specific options to set up
-SOCKO! accordingly.
+The plugin does not work with the usual Grunt files-options as it specifically requires one input, one output and one node. You can configure those in the options object of your task configuration:
 
 ```js
-grunt.initConfig({
-  socko: {
+socko: {
+  nodeA: {
     options: {
-      // Task-specific options go here.
-    },
-    your_target: {
-      // Target-specific file lists and/or options go here.
-    },
+      input: "basic",
+      output: "output.basic",
+      node: "nodeA"
+    }
   },
-});
-```
-
-### Options
-
-#### options.input
-Type: `String`
-Default value: ``
-
-Points to the SOCKO! input directory. 
-
-#### options.output
-Type: `String`
-Default value: ``
-
-Points to the SOCKO! output directory
-
-#### options.node
-Type: `String`
-Default value: ``
-
-Sets the node to generate.
-
-#### options.ignores
-Type: `Array`
-Default value: []
-
-Sets optional cartridge ignores for cartridge collector files.
-
-#### options.renames
-Type: `Array`
-Default value: []
-
-Sets up renaming file paths during SOCKO! generation.
-
-### Usage Example
-
-```js
-grunt.initConfig({
-  socko: {
+  nodeB: {
     options: {
-        input: 'documentation',
-        output: 'output/documentation',
-        node: 'prod'
-    },
-    default: {},
-    dev: {
-        options: {
-            node: 'dev'
-        }
-    },
-  },
-});
+      input: "basic",
+      output: "output.basic",
+      node: "nodeA:nodeB"
+    }
+  }
+}
 ```
 
-This would call SOCKO! to generate the input path "documentation" into the 
-output path "output/documentation". The target "default" would use node "prod",
-the target "dev" would use node "dev".
+The following options are required:
 
-## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
+* input: The path to the input directory
+* output: The path to the output directory
+* node: The node to process
+
+For other options, please see the API documentation of the [SockoOptionsInterface](https://dodevops.github.io/grunt-socko/interfaces/lib.sockooptionsinterface.html)
