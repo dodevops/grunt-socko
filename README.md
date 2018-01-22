@@ -50,3 +50,7 @@ The following options are required:
 * node: The node to process
 
 For other options, please see the API documentation of the [SockoOptionsInterface](https://dodevops.github.io/grunt-socko/interfaces/lib.sockooptionsinterface.html)
+
+## Migrating from Socko 1.0.0
+
+Please see the [notes from the CLI](https://github.com/dodevops/socko/blob/2.0.0/README.md#migrating-from-socko-1) about the breaking changes between SOCKO! 1 and 2
