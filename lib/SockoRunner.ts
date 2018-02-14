@@ -103,7 +103,6 @@ export class SockoRunner {
     return Bluebird.all(
       [
         canAccess(input, fs.constants.R_OK),
-        canAccess(output, fs.constants.W_OK),
         canAccess(hierarchy, fs.constants.R_OK),
         canAccess(nodePath, fs.constants.R_OK)
       ]
@@ -113,12 +112,32 @@ export class SockoRunner {
           return error.code === 'ENOENT'
         },
         (error: any) => {
-          if (error.path === output) {
-            return Bluebird.resolve()
-          }
           return Bluebird.reject(
             new Error(`Can not find directory ${error.path}. Please check your command line arguments.`)
           )
+        }
+      )
+      .catch(
+        (error: any) => {
+          return error.code === 'EACCES'
+        },
+        (error: any) => {
+          return Bluebird.reject(
+            new Error(`Can not access directory ${error.path}. Please check your command line arguments.`)
+          )
+        }
+      )
+      .then(
+        () => {
+          return canAccess(output, fs.constants.W_OK)
+        }
+      )
+      .catch(
+        (error: any) => {
+          return error.code === 'ENOENT'
+        },
+        () => {
+          return Bluebird.resolve()
         }
       )
       .catch(
