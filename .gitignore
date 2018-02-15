@@ -4,6 +4,9 @@ index.d.ts
 lib/**/*.d.ts
 lib/**/*.js
 lib/**/*.js.map
+tasks/**/*.d.ts
+tasks/**/*.js
+tasks/**/*.js.map
 test/**/*.js
 test/**/*.d.ts
 test/**/*.js.map
