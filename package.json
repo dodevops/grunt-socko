@@ -57,7 +57,7 @@
     "grunt-shell": "^2.1.0",
     "tslint": "^5.9.1",
     "tslint-config-standard": "^7.0.0",
-    "typescript": "^2.6.2",
+    "typescript": "~2.6.2",
     "@types/grunt": "^0.4.22",
     "grunt-cli": "^1.2.0",
     "baseman": "^0.1.0-dev.8",
