@@ -1,5 +1,8 @@
 export default [
   {
-    name: 'generate'
+    name: 'generate',
+    env: {
+      ENVVALUE: 'ENVVALUESET'
+    }
   }
 ]

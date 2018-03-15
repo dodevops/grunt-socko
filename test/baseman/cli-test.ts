@@ -8,6 +8,7 @@ import Bluebird = require('bluebird')
 interface SubcaseDefinition {
   name: string
   args: string[]
+  env?: any
 }
 
 export class GruntSockoCLITestCase extends CLITestCase {
@@ -83,6 +84,13 @@ export class GruntSockoCLITest extends CLITest {
             }
 
             return subcases.map(subcase => {
+              if (subcase.env) {
+                for (let env in subcase.env) {
+                  if (subcase.env.hasOwnProperty(env)) {
+                    process.env[env] = subcase.env[env]
+                  }
+                }
+              }
               return new GruntSockoCLITestCase(
                 `${caseName}${subcase.name}`,
                 debuggerArgs.concat([path.join(__dirname, '..', '..', 'node_modules', '.bin', 'grunt')]),
